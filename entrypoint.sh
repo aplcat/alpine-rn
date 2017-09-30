@@ -1,4 +1,5 @@
 #!/bin/sh
+sed -i 's/app:x:1000/app:x:`id -u`/' /etc/passwd
 
 ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa && \
 ssh-keygen -f /etc/ssh/ssh_host_dsa_key -N '' -t dsa && \
