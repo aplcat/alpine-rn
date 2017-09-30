@@ -18,15 +18,15 @@ RUN apk --no-cache upgrade \
 RUN curl -Lo /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.1.3/dumb-init_1.1.3_amd64 \
  && chmod +x /usr/local/bin/dumb-init 
 
-# Prepare SSH service
-RUN echo "Port $SSH_PORT" >> /etc/ssh/sshd_config \
- && mkdir -p /var/empty && chmod 700 /var/empty \
- && export SSH_PORT=$SSH_PORT 
-
 # Grant privileges
 RUN chgrp -R 0     /var /etc /home \
  && chmod -R g+rwX /var /etc /home \
  && chmod 664 /etc/passwd /etc/group
+
+# Prepare SSH service
+RUN echo "Port $SSH_PORT" >> /etc/ssh/sshd_config \
+ && mkdir -p /var/empty && chmod 700 /var/empty \
+ && export SSH_PORT=$SSH_PORT 
 
 # Install React Native CLI
 RUN npm install -g react-native-cli
