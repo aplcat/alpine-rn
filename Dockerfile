@@ -31,8 +31,8 @@ RUN echo "Port $SSH_PORT" >> /etc/ssh/sshd_config \
 # Install React Native CLI
 RUN npm install -g react-native-cli
 
-WORKDIR /home
-VOLUME  /home
+WORKDIR /volume
+VOLUME  /volume
 
 EXPOSE $SSH_PORT 3000 3001 8000 8080 8081
 
