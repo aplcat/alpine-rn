@@ -17,5 +17,5 @@ ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -N '' -t ed25519
 # Default execution command
 EXEC=${EXEC:-bash}
 
-# Run execution command
-${@:-$EXEC}
+# Exec ARGS or EXEC
+exec ${@:-$EXEC}
