@@ -14,8 +14,8 @@ ssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -N '' -t ecdsa && \
 ssh-keygen -f /etc/ssh/ssh_host_ed25519_key -N '' -t ed25519
 /usr/sbin/sshd
 
-# Default exec
+# Default execution command
 EXEC=${EXEC:-bash}
 
-# Exec ARGS or EXEC
-exec ${@:-$EXEC}
+# Run execution command
+${@:-$EXEC}
