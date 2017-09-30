@@ -2,7 +2,7 @@
 
 # Adjust user id (Useful if host assign random uid) 
 UID=${UID:-`id -u`}
-sed -i "s/app:x:[[:digit:]]/app:x:$UID/" /etc/passwd
+sed -i "s/app:x:[^:]*/app:x:$UID/" /etc/passwd
 
 # Run SSH service
 ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa && \
