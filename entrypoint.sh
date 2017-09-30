@@ -1,8 +1,11 @@
 #!/bin/sh
 
+# Default User
+USERNAME=${USERNAME:-app}
+USERID=${USERID:-`id -u`}
+
 # Adjust user id (Useful if host assign random uid) 
-UID=${UID:-`id -u`}
-sed -i "s/app:x:[^:]*/app:x:$UID/" /etc/passwd
+sed -i "s/$USERNAME:x:[^:]*/$USERNAME:x:$USERID/" /etc/passwd
 
 # Run SSH service
 ssh-keygen -f /etc/ssh/ssh_host_rsa_key -N '' -t rsa && \
